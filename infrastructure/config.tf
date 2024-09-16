@@ -7,18 +7,15 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "value"
-    key = "value"
-    region = "value"
-    encrypt = true
-    dynamodb_table = "value"
-    
+    bucket         = "terraform-state-task"
+    key            = "backend.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = "terraform-state-table"
   }
 
 }
 
 provider "aws" {
-    access_key = ""
-    secret_key = ""
   region = "us-east-1"
 }
