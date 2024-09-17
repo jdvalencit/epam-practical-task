@@ -16,5 +16,5 @@ variable "public_subnet_ips" {
 
 variable "private_subnet_ips" {
   type        = list(string)
-  description = "List of ips to be assigned to public subnet"
+  description = "List of ips to be assigned to private subnet"
 }
