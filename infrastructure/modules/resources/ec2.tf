@@ -63,11 +63,11 @@ resource "aws_security_group" "backend_sg" {
 
 #Bastion host instance
 resource "aws_instance" "bastion_host" {
-  ami             = var.bastion_ami
-  instance_type   = var.bastion_instance_type
-  subnet_id       = var.public_subnets[0]
-  key_name        = var.bastion_key_pair
-  security_groups = [aws_security_group.bastion_sg.name]
+  ami                         = var.bastion_ami
+  instance_type               = var.bastion_instance_type
+  subnet_id                   = var.public_subnets[0]
+  key_name                    = var.bastion_key_pair
+  security_groups             = [aws_security_group.bastion_sg.name]
   associate_public_ip_address = true
 
   tags = {
@@ -78,23 +78,23 @@ resource "aws_instance" "bastion_host" {
 
 # Front-end instance
 resource "aws_instance" "frontend_instance" {
-  count         = 1 
+  count         = var.frontend_instances_count
   ami           = var.frontend_ami
   instance_type = var.frontend_instance_type
   subnet_id     = var.public_subnets[1]
   #key_name      = var.
-  security_groups = [aws_security_group.frontend_sg.name]
+  security_groups             = [aws_security_group.frontend_sg.name]
   associate_public_ip_address = true
 
   tags = {
     Name = "Frontend-${count.index}"
-    Env = terraform.workspace
+    Env  = terraform.workspace
   }
 }
 
 # Back-end instance
 resource "aws_instance" "backend_instance" {
-  count         = 1 
+  count         = var.backend_instances_count
   ami           = var.backend_ami
   instance_type = var.backend_instance_type
   subnet_id     = var.private_subnets[0]
@@ -103,62 +103,6 @@ resource "aws_instance" "backend_instance" {
 
   tags = {
     Name = "Backend-${count.index}"
-    Env = terraform.workspace
+    Env  = terraform.workspace
   }
 }
-
-
-
-/*
-resource "aws_security_group_rule" "SG_control_ingress_rule" {
-  security_group_id = aws_security_group.SG_control_node.id
-  type              = "ingress"
-  cidr_blocks       = ["0.0.0.0/0"]
-  protocol  = "tcp"
-  from_port = 22
-  to_port   = 22
-}
-
-resource "aws_security_group_rule" "SG_control_egress_rule" {
-  security_group_id = aws_security_group.SG_control_node.id
-  type              = "egress"
-  cidr_blocks       = ["0.0.0.0/0"]
-  protocol          = "-1"
-  from_port         = 0
-  to_port           = 0
-}
-
-#Nodes SG
-resource "aws_security_group" "SG_node" {
-  name        = "SG-Node"
-  description = "Security group for Ansible node"
-  vpc_id      = module.vpc.vpc_id
-}
-
-resource "aws_security_group_rule" "SG_node_ingress_rule_ip" {
-  security_group_id = aws_security_group.SG_node.id
-  type              = "ingress"
-  cidr_blocks       = ["18.206.107.24/29"]
-  protocol          = "tcp"
-  from_port         = 22
-  to_port           = 22
-}
-
-resource "aws_security_group_rule" "SG_node_ingress_rule_sg" {
-  security_group_id        = aws_security_group.SG_node.id
-  type                     = "ingress"
-  source_security_group_id = aws_security_group.SG_control_node.id
-  protocol                 = "tcp"
-  from_port                = 22
-  to_port                  = 22
-}
-
-resource "aws_security_group_rule" "SG_node_egress_rule" {
-  security_group_id = aws_security_group.SG_node.id
-  type              = "egress"
-  cidr_blocks       = ["0.0.0.0/0"]
-  protocol          = "-1"
-  from_port         = 0
-  to_port           = 0
-}
-*/

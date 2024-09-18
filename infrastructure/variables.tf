@@ -18,3 +18,13 @@ variable "private_subnet_ips" {
   type        = list(string)
   description = "List of ips to be assigned to private subnet"
 }
+
+variable "frontend_instances_count" {
+  type        = number
+  description = "Number of frontend instances to be created"
+}
+
+variable "backend_instances_count" {
+  type        = number
+  description = "Number of backend instances to be created"
+}

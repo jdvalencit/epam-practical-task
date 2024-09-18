@@ -54,3 +54,15 @@ variable "bastion_key_pair" {
   default     = "ansible"
   description = "Key pair for bastion host instance"
 }
+
+variable "frontend_instances_count" {
+  type        = number
+  default     = 1
+  description = "Number of frontend instances to be created"
+}
+
+variable "backend_instances_count" {
+  type        = number
+  default     = 1
+  description = "Number of backend instances to be created"
+}
