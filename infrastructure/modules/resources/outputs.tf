@@ -9,3 +9,7 @@ output "frontend_ip" {
 output "backend_ip" {
   value = [for instance in aws_instance.backend_instance : instance.private_ip]
 }
+
+output "rds_endpoint" {
+  value = aws_db_instance.rds_instance.endpoint
+}

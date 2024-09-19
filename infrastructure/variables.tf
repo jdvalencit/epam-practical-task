@@ -28,3 +28,18 @@ variable "backend_instances_count" {
   type        = number
   description = "Number of backend instances to be created"
 }
+
+variable "db_username" {
+  type        = string
+  description = "Username for RDS database"
+}
+
+variable "db_name" {
+  type        = string
+  description = "Name for for RDS database"
+}
+
+variable "db_password" {
+  type        = string
+  description = "Password for RDS database"
+}

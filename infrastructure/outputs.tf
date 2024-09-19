@@ -9,3 +9,7 @@ output "public_subnets" {
 output "private_subnets" {
   value = module.landing_zone.private_subnets
 }
+
+output "rds_endpoint" {
+  value = module.resources.rds_endpoint
+}

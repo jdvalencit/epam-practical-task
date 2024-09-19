@@ -49,10 +49,10 @@ variable "backend_instance_type" {
   description = "Instance type for backend instance"
 }
 
-variable "bastion_key_pair" {
+variable "key_pair" {
   type        = string
   default     = "ansible"
-  description = "Key pair for bastion host instance"
+  description = "Key pair for instances"
 }
 
 variable "frontend_instances_count" {
@@ -65,4 +65,19 @@ variable "backend_instances_count" {
   type        = number
   default     = 1
   description = "Number of backend instances to be created"
+}
+
+variable "db_username" {
+  type        = string
+  description = "Username for RDS database"
+}
+
+variable "db_name" {
+  type        = string
+  description = "Username for RDS database"
+}
+
+variable "db_password" {
+  type        = string
+  description = "Username for RDS database"
 }

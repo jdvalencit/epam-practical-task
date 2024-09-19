@@ -15,4 +15,7 @@ module "resources" {
   private_subnets          = module.landing_zone.private_subnets
   frontend_instances_count = 1
   backend_instances_count  = 1
+  db_name                  = var.db_name
+  db_username              = var.db_username
+  db_password              = var.db_password
 }
