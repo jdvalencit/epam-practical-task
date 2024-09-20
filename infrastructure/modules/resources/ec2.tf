@@ -37,6 +37,14 @@ resource "aws_security_group" "frontend_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    #security_groups = [aws_security_group.frontend_sg.id]
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -61,6 +69,14 @@ resource "aws_security_group" "backend_sg" {
     security_groups = [aws_security_group.frontend_sg.id]
   }
 
+  ingress {
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
+    #security_groups = [aws_security_group.frontend_sg.id]
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -79,7 +95,8 @@ resource "aws_instance" "bastion_host" {
   instance_type               = var.bastion_instance_type
   subnet_id                   = var.public_subnets[0]
   key_name                    = var.key_pair
-  security_groups             = [aws_security_group.bastion_sg.id]
+  #security_groups             = [aws_security_group.bastion_sg.id]
+  vpc_security_group_ids = [aws_security_group.bastion_sg.id]
   associate_public_ip_address = true
 
   tags = {
@@ -95,7 +112,8 @@ resource "aws_instance" "frontend_instance" {
   instance_type               = var.frontend_instance_type
   subnet_id                   = var.public_subnets[1]
   key_name                    = var.key_pair
-  security_groups             = [aws_security_group.frontend_sg.id]
+  #security_groups             = [aws_security_group.frontend_sg.id]
+  vpc_security_group_ids = [aws_security_group.frontend_sg.id]
   associate_public_ip_address = true
 
   tags = {
@@ -111,7 +129,8 @@ resource "aws_instance" "backend_instance" {
   instance_type   = var.backend_instance_type
   subnet_id       = var.private_subnets[0]
   key_name        = var.key_pair
-  security_groups = [aws_security_group.backend_sg.id]
+  #security_groups = [aws_security_group.backend_sg.id]
+  vpc_security_group_ids = [aws_security_group.backend_sg.id]
 
   tags = {
     Name = "Backend-${count.index}"
