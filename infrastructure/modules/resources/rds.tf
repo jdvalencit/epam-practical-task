@@ -41,7 +41,6 @@ resource "aws_db_instance" "rds_instance" {
   db_name                = var.db_name
   username               = var.db_username
   password               = var.db_password
-  multi_az               = terraform.workspace == "prod" ? true : false
   skip_final_snapshot    = terraform.workspace == "prod" ? false : true
   storage_encrypted      = terraform.workspace == "prod" ? true : false
   deletion_protection    = terraform.workspace == "prod" ? true : false

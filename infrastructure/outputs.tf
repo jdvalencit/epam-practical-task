@@ -13,3 +13,7 @@ output "private_subnets" {
 output "rds_endpoint" {
   value = module.resources.rds_endpoint
 }
+
+output "front_lb_dns" {
+  value = module.resources.front_lb_dns
+}

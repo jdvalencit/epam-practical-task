@@ -13,3 +13,7 @@ output "backend_ip" {
 output "rds_endpoint" {
   value = aws_db_instance.rds_instance.endpoint
 }
+
+output "front_lb_dns" {
+  value = aws_lb.front-lb.dns_name
+}
