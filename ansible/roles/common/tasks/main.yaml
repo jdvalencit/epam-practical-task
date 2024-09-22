@@ -1,0 +1,3 @@
+---
+- name: Install common dependencies
+  include_tasks: roles/common/tasks/install_dependencies.yaml

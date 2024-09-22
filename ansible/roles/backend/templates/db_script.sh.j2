@@ -1,0 +1,29 @@
+#!/bin/bash
+
+DB_HOST="{{ db_host }}"
+DB_USER="{{ db_user }}"
+DB_PASS="{{ db_pass }}"
+DB_NAME="{{ db_name }}"
+
+mysql -h $DB_HOST -u $DB_USER -p$DB_PASS $DB_NAME << EOF
+USE movie_db;
+CREATE TABLE IF NOT EXISTS movies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    release_year INT NOT NULL,
+    score INT NOT NULL,
+    reviewer VARCHAR(255),
+    publication VARCHAR(255)
+);
+CREATE TABLE IF NOT EXISTS reviewers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    publication VARCHAR(255),
+    avatar VARCHAR(255)
+);
+CREATE TABLE IF NOT EXISTS publications (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    avatar VARCHAR(255)
+);
+EOF

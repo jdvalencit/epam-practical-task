@@ -1,0 +1,6 @@
+---
+- name: install_dependencies on backend
+  include_tasks: roles/backend/tasks/install_dependencies.yaml
+
+- name: create database schema
+  include_tasks: roles/backend/tasks/create_db_script.yaml

@@ -1,0 +1,3 @@
+frontend_src_dir: ~/devops-rampup/movie-analyst-ui
+
+frontend_start_command: "node {{ frontend_src_dir }}/server.js"

@@ -1,0 +1,10 @@
+backend_port: 3000
+
+db_host: 
+db_user: applicationuser
+db_pass: applicationuser
+db_name: movie_db
+
+backend_src_dir: ~/devops-rampup/movie-analyst-api
+
+backend_start_command: "node {{ backend_src_dir }}/server.js"

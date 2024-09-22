@@ -14,7 +14,7 @@ resource "aws_cloudwatch_dashboard" "ec2-dashboar" {
             "AWS/EC2",
             "CPUUtilization",
             "InstanceId",
-            "i-012345"
+            ""
           ]
         ]
         period = 300

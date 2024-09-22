@@ -1,0 +1,8 @@
+---
+- name: Create the necessary database schema
+  template:
+        src: db_script.sh.j2
+        dest: /{{ backend_src_dir }}/db_script.sh
+        mode: '0755'
+  notify: 
+    - execute db script

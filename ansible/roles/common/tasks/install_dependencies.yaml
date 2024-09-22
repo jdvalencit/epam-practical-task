@@ -1,0 +1,12 @@
+---
+- name: Install common apt dependencies on frontend and backend nodes
+  package: 
+    name:
+      - mysql-client-core-8.0
+      - nodejs
+      - npm
+    state: latest
+    #notify:
+  become: true
+
+
