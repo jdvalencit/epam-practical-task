@@ -5,7 +5,7 @@
     upgrade: yes
     update_cache: yes
 
-- name: Install common apt dependencies on frontend and backend nodes
+- name: Install common apt dependencies
   package: 
     name:
       - mysql-client-core-8.0

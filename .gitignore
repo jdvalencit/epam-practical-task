@@ -36,6 +36,7 @@ override.tf.json
 .terraformrc
 terraform.rc
 
-
 #.vscode
 .vscode/
+
+*.pem

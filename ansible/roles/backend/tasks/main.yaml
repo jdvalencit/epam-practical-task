@@ -6,4 +6,4 @@
   include_tasks: roles/backend/tasks/create_db_script.yaml
 
 - name: start backend server
-  command: {{ backend_start_command }}
+  command: "{{ backend_start_command }}"

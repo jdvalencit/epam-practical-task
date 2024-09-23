@@ -104,7 +104,7 @@ resource "aws_instance" "bastion_host" {
     Env  = terraform.workspace
   }
 
-  user_data = file("${path.module}/scripts/bastion_setup.sh")
+  #user_data = file("${path.module}/scripts/bastion_setup.sh")
 }
 
 # Front-end instance
