@@ -3,3 +3,4 @@
   community.general.npm:
     path: /{{ frontend_src_dir }}/package.json
     state: present
+  become: true

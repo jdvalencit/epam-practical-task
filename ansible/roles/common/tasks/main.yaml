@@ -1,3 +1,8 @@
 ---
 - name: Install common dependencies
   include_tasks: roles/common/tasks/install_dependencies.yaml
+
+- name: Clone application code from github repo
+  ansible.builtin.git:
+    repo: https://github.com/aljoveza/devops-rampup.git
+    dest: /src/devops-rampup

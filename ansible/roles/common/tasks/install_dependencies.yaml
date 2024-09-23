@@ -1,12 +1,17 @@
 ---
+- name: Update and upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: Install common apt dependencies on frontend and backend nodes
   package: 
     name:
       - mysql-client-core-8.0
       - nodejs
       - npm
+      - python3
+      - python3-pip
     state: latest
-    #notify:
   become: true
-
-

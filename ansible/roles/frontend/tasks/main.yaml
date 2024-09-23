@@ -1,0 +1,3 @@
+---
+- name: install dependencies on frontend hosts
+  include_tasks: roles/frontend/tasks/install_dependencies.yaml
