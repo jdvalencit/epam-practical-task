@@ -1,0 +1,4 @@
+---
+- name: Set environment variables for database access
+  shell: export DB_HOST={{ db_host }}
+  become: true

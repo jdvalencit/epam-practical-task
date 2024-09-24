@@ -1,3 +1,9 @@
 ---
-- name: install dependencies on frontend hosts
+- name: Set ENV variables
+  include_tasks: roles/frontend/tasks/set_env_variables.yaml
+
+- name: Install dependencies on frontend hosts
   include_tasks: roles/frontend/tasks/install_dependencies.yaml
+
+- name: start frontend server
+  shell: "{{ frontend_start_command }}"

@@ -1,6 +1,6 @@
 ---
 - name: Backend configuration playbook
-  hosts: backend_nodes
+  hosts: backend
   gather_facts: yes
   roles:
     - common

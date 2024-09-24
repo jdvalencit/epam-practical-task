@@ -5,4 +5,4 @@
 - name: Clone application code from github repo
   ansible.builtin.git:
     repo: https://github.com/aljoveza/devops-rampup.git
-    dest: /src/devops-rampup
+    dest: ~/devops-rampup

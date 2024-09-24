@@ -1,6 +1,6 @@
 ---
 - name: Install npm packages based on package.json
   community.general.npm:
-    path: /{{ backend_src_dir }}/package.json
+    path: "/{{ backend_src_dir }}"
     state: present
   become: true

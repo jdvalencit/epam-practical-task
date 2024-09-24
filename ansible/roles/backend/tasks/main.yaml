@@ -1,9 +1,12 @@
 ---
+- name: Set ENV variables
+  include_tasks: roles/backend/tasks/set_env_variables.yaml
+
 - name: install dependencies on backend hosts
   include_tasks: roles/backend/tasks/install_dependencies.yaml
 
 - name: create database schema
-  include_tasks: roles/backend/tasks/create_db_script.yaml
+  include_tasks: roles/backend/tasks/create_db_schema.yaml
 
 - name: start backend server
-  command: "{{ backend_start_command }}"
+  shell: "{{ backend_start_command }}"

@@ -1,0 +1,6 @@
+backend_url: 
+port: 80
+
+frontend_src_dir: /home/ubuntu/devops-rampup/movie-analyst-ui
+
+frontend_start_command: "node {{ frontend_src_dir }}/server.js &"

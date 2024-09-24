@@ -3,8 +3,8 @@ resource "aws_security_group" "alb_front_sg" {
   vpc_id = var.vpc_id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 3030
+    to_port     = 3030
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -26,7 +26,7 @@ resource "aws_lb" "front-lb" {
 
 resource "aws_lb_target_group" "frontend_tg" {
   name     = "${terraform.workspace}-frontend-tg"
-  port     = 80
+  port     = 3030
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 
@@ -37,7 +37,7 @@ resource "aws_lb_target_group" "frontend_tg" {
 
 resource "aws_lb_listener" "frontend_listener" {
   load_balancer_arn = aws_lb.front-lb.arn
-  port              = 80
+  port              = 3030
   protocol          = "HTTP"
   default_action {
     type             = "forward"
@@ -49,7 +49,7 @@ resource "aws_lb_target_group_attachment" "frontend_attachment" {
   count            = var.frontend_instances_count
   target_group_arn = aws_lb_target_group.frontend_tg.arn
   target_id        = aws_instance.frontend_instance[count.index].id
-  port             = 80
+  port             = 3030
 }
 
 #Internal load balancer

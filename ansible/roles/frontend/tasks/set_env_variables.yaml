@@ -1,0 +1,8 @@
+---
+- name: Set backend_url environment variable for backend connection
+  shell: export BACKEND_URL={{ backend_url }}
+  become: true
+
+- name: Set port environment variable for backend connection
+  shell: export BACKEND_URL={{ port }}
+  become: true

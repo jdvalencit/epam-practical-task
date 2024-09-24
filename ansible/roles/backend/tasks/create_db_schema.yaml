@@ -4,8 +4,9 @@
         src: db_script.sh.j2
         dest: "/{{ backend_src_dir }}/db_script.sh"
         mode: '0755'
-  notify: 
-    - execute db script
+
+- name: excecute db script
+  shell: sh "{{ backend_src_dir }}/db_script.sh"
 
 - name: Populate database
   command: "node /{{ backend_src_dir }}/seeds.js"

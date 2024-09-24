@@ -31,8 +31,8 @@ resource "aws_security_group" "frontend_sg" {
   vpc_id = var.vpc_id
 
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 3030
+    to_port     = 3030
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }

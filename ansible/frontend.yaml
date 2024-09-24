@@ -1,6 +1,6 @@
 ---
 - name: Frontend configuration playbook
-  hosts: frontend_nodes
+  hosts: frontend
   gather_facts: yes
   roles:
     - common

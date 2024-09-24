@@ -1,4 +1,0 @@
----
-- name: execute db script
-  command: /{{ backend_src_dir }}/db_script.sh
-  become: true
